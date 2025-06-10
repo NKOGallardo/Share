@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Builder</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+  <h1>Quiz Builder</h1>
+  <input type="text" id="quizTitle" placeholder="Enter Quiz Title" />
+  <input type="text" id="questionInput" placeholder="Enter Question" />
+  <input type="text" class="option" placeholder="Option 1" />
+  <input type="text" class="option" placeholder="Option 2" />
+  <input type="text" class="option" placeholder="Option 3" />
+  <input type="text" class="option" placeholder="Option 4" />
+  <select id="correctAnswer">
+    <option value="0">Correct Answer: Option 1</option>
+    <option value="1">Correct Answer: Option 2</option>
+    <option value="2">Correct Answer: Option 3</option>
+    <option value="3">Correct Answer: Option 4</option>
+  </select>
+  <button onclick="addQuestion()">Add Question</button>
+
+  <h2>Live Preview</h2>
+  <p id="quizTitlePreview" style="font-weight: bold;"></p>
+  <div id="preview"></div>
+
+  <button onclick="shareQuiz()" style="background-color:#28a745;color:white;">Share Quiz</button>
+  <input id="shareLink" readonly style="margin-top:10px; display:none;" />
+
+  <div class="share-buttons">
+    <button onclick="shareWhatsApp()" style="background-color: #25D366; color: white;">Share on WhatsApp</button>
+    <button onclick="shareTwitter()" style="background-color: #1DA1F2; color: white;">Share on Twitter</button>
+    <button onclick="webShare()" style="background-color: #333; color: white;">Share via...</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Quiz Builder. Made by Ntobeko.
+  </footer>
+
+  <script href="JS.js">
+   
+  </script>
+</body>
+</html>
