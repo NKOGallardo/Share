@@ -59,6 +59,20 @@
     font-size: 14px;
   }
 
+  body.dark-mode {
+  background: #181818;
+  color: #eee;
+}
+body.dark-mode input, body.dark-mode select, body.dark-mode button {
+  background: #222;
+  color: #eee;
+  border-color: #444;
+}
+body.dark-mode .question-box {
+  background: #222;
+  border-color: #444;
+}
+
   @media (max-width: 600px) {
     body {
       padding: 10px;
