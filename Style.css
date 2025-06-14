@@ -1,95 +1,109 @@
-* {
+
+  /* Reset & Base */
+  * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
   }
 
   body {
-    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
     padding: 20px;
-    margin: auto;
-    max-width: 800px;
-    position: relative;
-    min-height: 100vh;
-    background-color: #f2f2f2;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  h1, h2 {
+    margin-bottom: 15px;
+    text-align: center;
   }
 
   input, select, button {
     display: block;
-    width: 100%;
-    margin-bottom: 10px;
+    margin: 10px auto;
     padding: 10px;
+    width: 90%;
+    max-width: 400px;
     font-size: 16px;
-  }
-
-  .question-box {
+    border-radius: 8px;
     border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background: #fff;
+    transition: all 0.3s ease;
   }
 
-  .correct {
-    color: green;
-    font-weight: bold;
+  input:focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #0056b3;
   }
 
   .share-buttons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    margin: 20px 0;
   }
 
   .share-buttons button {
-    flex: 1 1 30%;
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
+    flex: 1 1 120px;
   }
 
   footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
     background-color: #333;
     color: white;
-    text-align: center;
-    padding: 10px 0;
     font-size: 14px;
+    bottom: 0;
+    width: 100%;
   }
 
+  /* Dark Mode Support */
   body.dark-mode {
-  background: #181818;
-  color: #eee;
-}
-body.dark-mode input, body.dark-mode select, body.dark-mode button {
-  background: #222;
-  color: #eee;
-  border-color: #444;
-}
-body.dark-mode .question-box {
-  background: #222;
-  border-color: #444;
-}
+    background-color: #121212;
+    color: #f4f4f4;
+  }
 
-  @media (max-width: 600px) {
-    body {
-      padding: 10px;
-    }
+  body.dark-mode input, 
+  body.dark-mode select {
+    background-color: #1f1f1f;
+    color: #f4f4f4;
+    border: 1px solid #444;
+  }
 
+  body.dark-mode button {
+    background-color: #444;
+    color: white;
+  }
+
+  body.dark-mode footer {
+    background-color: #000;
+  }
+
+  /* Responsive Improvements */
+  @media (max-width: 480px) {
     input, select, button {
       font-size: 14px;
       padding: 8px;
     }
 
-    .share-buttons button {
-      flex: 1 1 100%;
-      font-size: 14px;
+    h1 {
+      font-size: 22px;
     }
 
-    footer {
-      font-size: 12px;
-      padding: 8px 0;
+    h2 {
+      font-size: 18px;
     }
   }
