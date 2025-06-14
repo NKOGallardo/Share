@@ -2,57 +2,224 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Builder</title>
-  <link rel="stylesheet" href="Game.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Builder Home</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #f8f9fa 0%, #e0e7ff 100%);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 420px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 2.5rem 2rem 2rem 2rem;
+      margin-top: 20vh;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1 {
+      color: #3b3b3b;
+      margin-bottom: 0.5em;
+      transition: color 0.3s;
+    }
+    p {
+      color: #555;
+      margin-bottom: 2em;
+      transition: color 0.3s;
+    }
+    .main-btn {
+      display: block;
+      width: 350px;
+      padding: 1em;
+      margin: 0.5em 0;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      background: #4f8cff;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .main-btn:hover {
+      background: #2563eb;
+    }
+    .footer {
+      margin-top: 3em;
+      text-align: center;
+      color: #888;
+      font-size: 0.95em;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background: linear-gradient(120deg, #181a1b 0%, #23272f 100%);
+      color: #eee;
+    }
+    body.dark-mode .container {
+      background: #23272f;
+      color: #eee;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    body.dark-mode h1 {
+      color: #e0e7ff;
+    }
+    body.dark-mode p {
+      color: #b0b8c1;
+    }
+    body.dark-mode .main-btn {
+      background: #2563eb;
+      color: #fff;
+    }
+    body.dark-mode .main-btn:hover {
+      background: #4f8cff;
+      color: #fff;
+    }
+    body.dark-mode .footer {
+      background: #23272f !important;
+      color: #b0b8c1;
+    }
+
+    /* The switch - the box around the slider */
+    .switch {
+      font-size: 17px;
+      position: relative;
+      display: inline-block;
+      width: 3.5em;
+      height: 2em;
+      cursor: pointer;
+      margin-bottom: 1.5em;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* The slider */
+    .slider {
+      --background: #20262c;
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--background);
+      transition: 0.5s;
+      border-radius: 30px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 1.4em;
+      width: 1.4em;
+      border-radius: 50%;
+      left: 10%;
+      bottom: 15%;
+      box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
+      background: var(--background);
+      transition: 0.5s;
+    }
+
+    .decoration {
+      position: absolute;
+      content: "";
+      height: 2px;
+      width: 2px;
+      border-radius: 50%;
+      right: 20%;
+      top: 15%;
+      background: #e5f041e6;
+      backdrop-filter: blur(10px);
+      transition: all 0.5s;
+      box-shadow: -7px 10px 0 #e5f041e6, 8px 15px 0 #e5f041e6, -17px 1px 0 #e5f041e6,
+        -20px 10px 0 #e5f041e6, -7px 23px 0 #e5f041e6, -15px 25px 0 #e5f041e6;
+    }
+
+    input:checked ~ .decoration {
+      transform: translateX(-20px);
+      width: 10px;
+      height: 10px;
+      background: white;
+      box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
+        1px 17px 0 white, 10px 17px 0 white;
+    }
+
+    input:checked + .slider {
+      background-color: #5494de;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(100%);
+      box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.2rem 0.5rem;
+        margin-top: 20vh;
+      }
+      h1 {
+        font-size: 1.6em;
+      }
+      .main-btn {
+        width: 300px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Quiz Builder</h1>
 
-  <!-- Menu Bar -->
-<nav class="menu-bar">
-  <button id="darkModeBtn" type="button">Toggle Dark Mode</button>
-  <button id="saveDraftBtn" type="button">Save Draft</button>
-  <button id="loadDraftBtn" type="button">Load Draft</button>
-  <button id="exportBtn" type="button">Export Quiz</button>
-  <button id="importBtn" type="button">Import Quiz</button>
-  <a href="Index.html" class="menu-link">
-    <button style="text-decoration: none;" type="button">Home</button>
-  </a>
-  <input id="importInput" type="file" accept="application/json" style="display:none" />
-</nav>
-
-  <input type="text" id="quizTitle" placeholder="Enter Quiz Title" />
-  <input type="text" id="questionInput" placeholder="Enter Question" />
-  <input type="text" class="option" placeholder="Option 1" />
-  <input type="text" class="option" placeholder="Option 2" />
-  <input type="text" class="option" placeholder="Option 3" />
-  <input type="text" class="option" placeholder="Option 4" />
-  <select id="correctAnswer">
-    <option value="0">Correct Answer: Option 1</option>
-    <option value="1">Correct Answer: Option 2</option>
-    <option value="2">Correct Answer: Option 3</option>
-    <option value="3">Correct Answer: Option 4</option>
-  </select>
-  <button onclick="addQuestion()">Add Question</button>
-
-  <h2>Live Preview</h2>
-  <p id="quizTitlePreview" style="font-weight: bold;"></p>
-  <div id="preview"></div>
-
-  <button onclick="shareQuiz()" style="background-color:#28a745;color:white;">Share Quiz</button>
-  <input id="shareLink" readonly style="margin-top:10px; display:none;" />
-
-  <div class="share-buttons">
-    <button onclick="shareWhatsApp()" style="background-color: #25D366; color: white;">Share on WhatsApp</button>
-    <button onclick="shareTwitter()" style="background-color: #1DA1F2; color: white;">Share on Twitter</button>
-    <button onclick="webShare()" style="background-color: #333; color: white;">Share via...</button>
+  <div class="container">
+    <label for="switch" class="switch" title="Toggle dark mode">
+        <input id="switch" type="checkbox" />
+        <span class="slider"></span>
+        <span class="decoration"></span>
+    </label>
+    <h1>Welcome to Quiz Builder</h1>
+    <p>
+      Create your own quizzes and share them with friends!<br>
+      Or answer quizzes shared with you.
+    </p>
+    <a href="Main.html" class="main-btn">Create a Quiz</a>
   </div>
-
-  <footer>
-    &copy; 2025 Quiz Builder. Made by tap---> <a style="color:white;" href="https://nkogallardo.github.io/Personal-website/my%20web.html">Ntobeko.</a>
-  </footer>
-
-  <script src="JS.js"></script>
+  <div class="footer" style="margin-top: auto; padding: 1em; background-color: #f8f9fa;">
+    &copy; 2025 Quiz Builder. Made by <a href="https://nkogallardo.github.io/Personal-website/my%20web.html" style="color:#4f8cff;">Ntobeko</a>
+  </div>
+  <script>
+    // Dark mode toggle logic
+    const switchInput = document.getElementById('switch');
+    // On load, set dark mode if previously chosen
+    if (localStorage.getItem('quiz_dark_home') === 'true') {
+      document.body.classList.add('dark-mode');
+      switchInput.checked = true;
+    }
+    switchInput.addEventListener('change', function() {
+      if (this.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('quiz_dark_home', 'true');
+      } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('quiz_dark_home', 'false');
+      }
+    });
+  </script>
 </body>
 </html>
